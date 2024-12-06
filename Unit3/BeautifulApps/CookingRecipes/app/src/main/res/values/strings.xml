@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Cooking Recipes</string>
+    <string name="recipe1_title">チョコムースケーキ</string>
+    <string name="recipe1_detail">◎材料\n\n□チョコムースケーキ（15cm）\n・スイートチョコレート　220g\n・生クリーム（35%）100g（チョコと合わせる用）\n・生クリーム（35%）200g（立てる用）\n♢底生地\n・市販のクッキー　70g\n・スイートチョコレート　30g</string>
+    <string name="recipe2_title">カフェラテプリン</string>
+    <string name="recipe2_detail">◎材料\n◉カフェラテプリン（200ml 4個分）\n\n・ゼラチン　8g\n・冷水　40g\n・グラニュー糖　60g\n・インスタントコーヒー　10g\n・牛乳　200g\n\n・冷たい牛乳　300g\n・冷たい生クリーム（35%)　100g\n\n⚫︎飾り\n・生クリーム（35%）　50〜100g\n量は、お好みです</string>
+    <string name="recipe3_title">ニューヨーグチーズケーキ</string>
+    <string name="recipe3_detail">◎材料◉ニューヨーグチーズケーキ（5号 15cm)\n\n・ヨーグルト　400g\n・サワークリーム　100g\n・グラニュー糖　80g\n・卵　2個（108g前後）\n・コーンスターチ　30g\n・生クリーム（35%）　100g\n\n⚫︎底生地\n・クッキー　70g\n・無塩バター　30g</string>
+    <string name="recipe4_title">ヨーグルトプリン</string>
+    <string name="recipe4_detail">◎材料◉ヨーグルトプリン（4個分）\n\n⚫︎ヨーグルトプリン\n・グラニュー糖　40g\n・牛乳　100g\n・生クリーム（35%） 100g\n\n・ゼラチン　5g\n・冷水　25g\n\n・ギリシャヨーグルト　200g\n\n⚫︎ブルーベリーソース\n・ブルーベリー　100g\n・グラニュー糖　10g\n・レモン汁　3g</string>
+    <string name="recipe5_title">パンナコッタ</string>
+    <string name="recipe5_detail">材料（4～6人分）\n牛乳…1と½カップ\n生クリーム…1カップ\nグラニュー糖…60g\n粉ゼラチン…5g\n水…大さじ2\nラム酒…大さじ2\n\n[カラメルソース]\nグラニュー糖…50g\n水…小さじ1\n湯…¼カップ</string>
+    <string name="recipe6_title">抹茶プリン</string>
+    <string name="recipe6_detail">◎材料\n\n◉抹茶プリン（パウンド型18cm）\n\n・ゼラチン　8g\n・冷水　40g\n\n・無塩バター　30g\n・ホワイトチョコ　80g\n・抹茶パウダー　15g\n\n・生クリーム（35%) 200g\n・グラニュー糖　50g\n\n・牛乳　200g</string>
+    <string name="recipe7_title">ヨーグルトティラミス</string>
+    <string name="recipe7_detail">◎材料\n\n◉ヨーグルトティラミス（13cm角）\n\n・無糖ヨーグルト　400g\n・グラニュー糖　40g\n・生クリーム（35%）　200g\n\n⚫︎シロップ\n・水　80g\n・グラニュー糖　25g\n・インスタントコーヒー　8g\n\n\n・ビスケット　適</string>
+    <string name="recipe8_title">レモンレアチーズケーキ</string>
+    <string name="recipe8_detail">◎材料\n\n◉レモンレアチーズケーキ　5号（15cm）\n\n・クリームチーズ　200g\n・グラニュー糖　20g\n・レモンの皮　1個分\n・はちみつ　30g\n・レモン果汁　1個分\n・生クリーム（47%） 200g\n\n⚫︎底生地\n・クッキー　70g\n・無塩バター　40g</string>
+    <string name="recipe9_title">ブルーベリーレアチーズ</string>
+    <string name="recipe9_detail">◎材料\n◉ブルーベリーレアチーズ　5号（15cm）\n\n・冷凍ブルーベリー　100g\n・グラニュー糖　50g\n・レモン汁　5g\n\n・クリームチーズ　200g\n・生クリーム（47%） 200g\n・グラニュー糖　20g\n\n\n◉底生地\n・クッキー　70g\n・無塩バター　40g</string>
+    <string name="recipe10_title">たまご蒸しパン</string>
+    <string name="recipe10_detail">◎材料\n\n□たまご蒸しパン　８号カップ(6個分)\n\n・卵　1個(52g前後)\n・グラニュー糖　60g\n・米油　40g\n・牛乳　80g\n・バニラエッセンス 2.3滴\n・薄力粉　130g\n・ベーキングパウダー　4g\n・レーズン　30g（中身）\n・レーズン　25g（乗せる用）</string>
+</resources>
