@@ -142,7 +142,6 @@ class CupcakeScreenNavigationTest {
 
     private fun navigateToSummaryScreen() {
         navigateToPickupScreen()
-        val temp = getFormattedDate()
         composeTestRule.onNodeWithText(getFormattedDate())
             .performClick()
         composeTestRule.onNodeWithStringId(R.string.next)

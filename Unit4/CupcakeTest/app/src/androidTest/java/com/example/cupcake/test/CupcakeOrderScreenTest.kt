@@ -68,7 +68,7 @@ class CupcakeOrderScreenTest {
 
         composeTestRule.onNodeWithText(
             composeTestRule.activity.getString(
-                com.example.cupcake.R.string.subtotal_price,
+                R.string.subtotal_price,
                 subtotal
             )
         ).assertIsDisplayed()
