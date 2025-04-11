@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MyCity</string>
+    <!-- カテゴリ -->
+    <string name="category_name_cafe">カフェ</string>
+    <string name="category_name_restaurant">レストラン</string>
+    <string name="category_name_bringing_children">お子様連れ向き</string>
+    <string name="category_name_park">公園</string>
+    <string name="category_name_shopping_center">ショッピングセンター</string>
+
+    <!-- 推薦(カフェ) -->
+    <string name="recommendation_name_cafe_01">MOON SIDE COFFEE</string>
+    <string name="recommendation_name_cafe_02">ぬいぐるみと繋がるトンキーズカフェ</string>
+    <string name="recommendation_name_cafe_03">ワンズワン・コーヒー 上福岡店</string>
+    <string name="recommendation_name_cafe_04">ＴＩＭＥ</string>
+    <string name="recommendation_name_cafe_05">ChieCoffee</string>
+    <!-- 推薦(レストラン) -->
+    <string name="recommendation_name_restaurant_01">野ざわ</string>
+    <string name="recommendation_name_restaurant_02">隠れ家 どん亭</string>
+    <string name="recommendation_name_restaurant_03">季節のお料理とグリル焼き 雅</string>
+    <string name="recommendation_name_restaurant_04">天空</string>
+    <string name="recommendation_name_restaurant_05">カレーうどん専門店TFR</string>
+    <!-- 推薦(お子様連れ) -->
+    <string name="recommendation_name_bringing_children_01">くまのがっこうあそびひろば／namcoイオンタウンふじみ野店</string>
+    <string name="recommendation_name_bringing_children_02">ぬいぐるみと繋がるトンキーズカフェ</string>
+    <string name="recommendation_name_bringing_children_03">ふじみ野市総合センター フクトピア</string>
+    <string name="recommendation_name_bringing_children_04">イオンタウンふじみ野</string>
+    <string name="recommendation_name_bringing_children_05">福岡中央公園</string>
+    <!-- 推薦(公園) -->
+    <string name="recommendation_name_park_01">上福岡6丁目公園</string>
+    <string name="recommendation_name_park_02">西中央公園</string>
+    <string name="recommendation_name_park_03">上福岡3丁目公園</string>
+    <string name="recommendation_name_park_04">南台あすなろ公園</string>
+    <string name="recommendation_name_park_05">官舎公園</string>
+    <!-- 推薦(ショッピングセンター) -->
+    <string name="recommendation_name_shopping_center_01">ココネ上福岡（商業施設）</string>
+    <string name="recommendation_name_shopping_center_02">トナリエふじみ野</string>
+    <string name="recommendation_name_shopping_center_03">ビバモール 埼玉大井</string>
+    <string name="recommendation_name_shopping_center_04">イオンスタイルふじみ野</string>
+    <string name="recommendation_name_shopping_center_05">ふじみ野ナーレ</string>
+
+</resources>
