@@ -135,27 +135,29 @@ fun SportsApp(
                 )
             }
         } else if (contentType == SportsContentType.ListAndDetail) {
-            //val activity = LocalContext.current as Activity
-            val activity = LocalActivity.current as Activity
-            SportsListAndDetails(
-                sports = uiState.sportsList,
-                onClick = {
-                    viewModel.updateCurrentSport(it)
-                          },
-                /*sportListContentPadding*/ padding = innerPadding,
-                /*sportListModifier*/ modifier = Modifier
-                    .fillMaxWidth()
+                //val activity = LocalContext.current as Activity
+                val activity = LocalActivity.current as Activity
+                SportsListAndDetails(
+                    sports = uiState.sportsList,
+                    onClick = {
+                        viewModel.updateCurrentSport(it)
+                    },
+                    /*sportListContentPadding*/ padding = innerPadding,
+                    /*sportListModifier*/ modifier = Modifier
+                        .fillMaxWidth()
                     /*.padding(
-                        top = dimensionResource(R.dimen.padding_medium),
-                        start = dimensionResource(R.dimen.padding_medium),
-                        end = dimensionResource(R.dimen.padding_medium),
-                    )*/,
-                selectedSport = uiState.currentSport,
-                onBackPressed = {
-                    activity.finish()
-                },
-                //sportDetailContentPadding = innerPadding//PaddingValues(0.dp)
-            )
+                                top = dimensionResource(R.dimen.padding_medium),
+                                start = dimensionResource(R.dimen.padding_medium),
+                                end = dimensionResource(R.dimen.padding_medium),
+                            )*/,
+                    selectedSport = uiState.currentSport,
+                    onBackPressed = {
+                        activity.finish()
+                    },
+                    //sportDetailContentPadding = innerPadding//PaddingValues(0.dp)
+                )
+        } else if (contentType == SportsContentType.ListHoge) {
+            print("hoge")
         }
     }
 }
