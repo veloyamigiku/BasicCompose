@@ -32,4 +32,7 @@ object CategoriesDataProvider {
             imgId = R.drawable.bringing_children_icon
         ),
     )
+
+    val defaultCategory = allCategories[0]
+
 }

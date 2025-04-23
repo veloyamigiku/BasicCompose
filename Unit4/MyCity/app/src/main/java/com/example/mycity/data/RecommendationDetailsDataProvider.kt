@@ -377,7 +377,9 @@ object RecommendationDetailsDataProvider {
         )
     )
 
-    fun getRecommendationDetailById(recommendationId: Int): RecommendationDetail? {
-        return recommendationDetails[recommendationId]
+    val defaultRecommendationDetail = recommendationDetails.getValue(1)
+
+    fun getRecommendationDetailById(recommendationId: Int): RecommendationDetail {
+        return recommendationDetails.getValue(recommendationId)
     }
 }

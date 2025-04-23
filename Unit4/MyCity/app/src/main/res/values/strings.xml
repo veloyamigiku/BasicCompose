@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MyCity</string>
+
+    <!-- 画面上部 -->
+    <string name="back_button">Back</string>
+
+    <!-- 推薦詳細画面 -->
+    <string name="recommendation_detail_address">所在地</string>
+    <string name="recommendation_detail_business_hours">営業時間</string>
+
     <!-- カテゴリ -->
     <string name="category_name_cafe">カフェ</string>
     <string name="category_name_restaurant">レストラン</string>
