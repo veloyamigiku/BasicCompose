@@ -1,24 +1,32 @@
 package com.example.mycity.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -35,7 +43,7 @@ import com.example.mycity.ui.theme.MyCityTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyCityAppBar() {
+private fun MyCityAppBar() {
     TopAppBar(
         title = {
             Text(
@@ -53,7 +61,7 @@ fun MyCityAppBar() {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewMyCityAppBar() {
+private fun PreviewMyCityAppBar() {
     MyCityTheme {
         MyCityAppBar()
     }
@@ -63,7 +71,11 @@ fun PreviewMyCityAppBar() {
 private fun CategoriesListItem(
     category: Category
 ) {
-    Card {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -98,7 +110,7 @@ private fun CategoriesListImageItem(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCategoriesListItem() {
+private fun PreviewCategoriesListItem() {
     MyCityTheme {
         CategoriesListItem(
             category = CategoriesDataProvider.defaultCategory
@@ -125,7 +137,7 @@ private fun CategoriesList(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCategoriesList() {
+private fun PreviewCategoriesList() {
     MyCityTheme {
         CategoriesList(
             categories = CategoriesDataProvider.allCategories
@@ -137,21 +149,31 @@ fun PreviewCategoriesList() {
 private fun RecommendationListItem(
     recommendation: Recommendation
 ) {
-    Row {
-        Column {
-            Text(
-                text = stringResource(recommendation.nameId),
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.recommendation_item_inner_padding))
+        ) {
+            Column {
+                Text(
+                    text = stringResource(recommendation.nameId),
                 )
-            Text(
-                text = recommendation.score.toString()
-            )
+                Text(
+                    text = recommendation.score.toString()
+                )
+            }
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewRecommendationListItem() {
+private fun PreviewRecommendationListItem() {
     val recommendationList: List<Recommendation>? = RecommendationsDataProvider.getRecommendationsByCategoryId(Categories.CAFE.id)
     val recommendation: Recommendation = recommendationList!![0]
     MyCityTheme {
@@ -165,7 +187,11 @@ fun PreviewRecommendationListItem() {
 private fun RecommendationList(
     recommendations: List<Recommendation>
 ) {
-    LazyColumn {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(R.dimen.recommendation_item_vertical_spacing)
+        )
+    ) {
         items(items = recommendations, key = { recommendation -> recommendation.id }) { recommendation ->
             RecommendationListItem(
                 recommendation = recommendation
@@ -176,7 +202,7 @@ private fun RecommendationList(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewRecommendationList() {
+private fun PreviewRecommendationList() {
     MyCityTheme {
         RecommendationList(
             recommendations = RecommendationsDataProvider.getRecommendationsByCategoryId(categoryId = Categories.CAFE.id)!!
@@ -184,38 +210,140 @@ fun PreviewRecommendationList() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun RecommendationDetail(
-    recommendationDetail: RecommendationDetail
+private fun RecommendationDetailTopBar(
+    onBackButtonClicked: () -> Unit,
+    myCityUiState: MyCityUiState,
+    modifier: Modifier = Modifier
 ) {
-    Column {
-        Image(
-            painter = painterResource(recommendationDetail.imgId),
-            contentDescription = null
-        )
-        Row {
-            Text(
-                text = stringResource(recommendationDetail.nameId)
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(
+            onClick = onBackButtonClicked,
+            modifier = Modifier
+                .padding(horizontal = dimensionResource(id = R.dimen.recommendation_detail_top_bar_back_button_padding_horizontal))
+                .background(MaterialTheme.colorScheme.surface, shape = CircleShape)
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                contentDescription = stringResource(id = R.string.back_button)
             )
         }
-        Row {
-            Text(text = stringResource(R.string.recommendation_detail_address))
-            Text(text = recommendationDetail.address)
-        }
-        Row {
-            Text(text = stringResource(R.string.recommendation_detail_business_hours))
-            Text(text = recommendationDetail.businessHours)
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = dimensionResource(R.dimen.recommendation_detail_name_padding_end))
+        ) {
+            Text(
+                text = stringResource(myCityUiState.currentRecommendation.nameId),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewRecommendationDetail() {
+private fun PreviewRecommendationDetailTopBar() {
+    MyCityTheme {
+        RecommendationDetailTopBar(
+            onBackButtonClicked = {},
+            myCityUiState = MyCityUiState()
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun RecommendationDetailCard(
+    recommendationDetail: RecommendationDetail
+) {
+    Card {
+        Column {
+            Image(
+                painter = painterResource(recommendationDetail.imgId),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+            )
+            Column(
+                modifier = Modifier.padding(dimensionResource(R.dimen.recommendation_detail_content_padding))
+            ) {
+                Row {
+                    Text(
+                        text = stringResource(recommendationDetail.nameId)
+                    )
+                }
+                Row {
+                    Text(
+                        text = stringResource(R.string.recommendation_detail_address),
+                        modifier = Modifier.width(dimensionResource(R.dimen.recommendation_detail_content_item_name_width))
+                    )
+                    Text(text = recommendationDetail.address)
+                }
+                Row {
+                    Text(
+                        text = stringResource(R.string.recommendation_detail_business_hours),
+                        modifier = Modifier.width(dimensionResource(R.dimen.recommendation_detail_content_item_name_width))
+                    )
+                    Text(text = recommendationDetail.businessHours)
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewRecommendationDetailCard() {
+    MyCityTheme {
+        RecommendationDetailCard(
+            recommendationDetail = RecommendationDetailsDataProvider.defaultRecommendationDetail
+        )
+    }
+}
+
+@Composable
+private fun RecommendationDetail(
+    myCityUiState: MyCityUiState,
+    onBackPressed: () -> Unit,
+    isFullscreen: Boolean = false
+) {
+    Box {
+        LazyColumn {
+            item {
+                if (isFullscreen) {
+                    RecommendationDetailTopBar(
+                        onBackButtonClicked = onBackPressed,
+                        myCityUiState = myCityUiState,
+                        modifier = Modifier
+                            .padding(
+                                bottom = dimensionResource(R.dimen.recommendation_detail_top_bar_padding_bottom),
+                                top = dimensionResource(R.dimen.recommendation_detail_top_bar_padding_vertical)
+                            )
+                    )
+                }
+                RecommendationDetailCard(
+                    recommendationDetail = myCityUiState.currentRecommendation
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewRecommendationDetail() {
     MyCityTheme {
         RecommendationDetail(
-            recommendationDetail = RecommendationDetailsDataProvider.defaultRecommendationDetail
+            myCityUiState = MyCityUiState(),
+            onBackPressed = {},
+            isFullscreen = true
         )
     }
 }

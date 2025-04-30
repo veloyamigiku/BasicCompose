@@ -7,4 +7,16 @@
     <dimen name="category_item_img_size">40dp</dimen>
     <dimen name="category_item_img_left_padding">10dp</dimen>
     <dimen name="category_item_img_right_padding">20dp</dimen>
+
+    <!-- 推奨一覧画面 -->
+    <dimen name="recommendation_item_inner_padding">10dp</dimen>
+    <dimen name="recommendation_item_vertical_spacing">8dp</dimen>
+
+    <!-- 推奨詳細画面 -->
+    <dimen name="recommendation_detail_top_bar_back_button_padding_horizontal">10dp</dimen>
+    <dimen name="recommendation_detail_name_padding_end">10dp</dimen>
+    <dimen name="recommendation_detail_top_bar_padding_bottom">10dp</dimen>
+    <dimen name="recommendation_detail_top_bar_padding_vertical">10dp</dimen>
+    <dimen name="recommendation_detail_content_padding">10dp</dimen>
+    <dimen name="recommendation_detail_content_item_name_width">80dp</dimen>
 </resources>
