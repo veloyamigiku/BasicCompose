@@ -2,6 +2,7 @@
 <resources>
 
     <!-- カテゴリ一覧画面 -->
+    <dimen name="category_header_item_inner_padding">20dp</dimen>
     <dimen name="category_item_inner_padding">10dp</dimen>
     <dimen name="category_item_vertical_spacing">8dp</dimen>
     <dimen name="category_item_img_size">40dp</dimen>

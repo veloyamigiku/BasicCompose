@@ -23,7 +23,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -31,6 +33,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mycity.R
 import com.example.mycity.data.Categories
 import com.example.mycity.data.CategoriesDataProvider
@@ -40,6 +43,7 @@ import com.example.mycity.model.Category
 import com.example.mycity.model.Recommendation
 import com.example.mycity.model.RecommendationDetail
 import com.example.mycity.ui.theme.MyCityTheme
+import com.example.mycity.ui.utils.MyCityContentType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,6 +68,34 @@ private fun MyCityAppBar() {
 private fun PreviewMyCityAppBar() {
     MyCityTheme {
         MyCityAppBar()
+    }
+}
+
+@Composable
+private fun CategoriesListHeaderItem() {
+    Card(
+        colors = CardDefaults.cardColors(
+            //containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+       Row(
+           verticalAlignment = Alignment.CenterVertically,
+           modifier = Modifier
+               .fillMaxWidth()
+               .padding(dimensionResource(R.dimen.category_header_item_inner_padding))
+       ) {
+           Text(
+               text = "Category"
+           )
+       }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewCategoriesListHeaderItem() {
+    MyCityTheme {
+        CategoriesListHeaderItem()
     }
 }
 
@@ -141,6 +173,38 @@ private fun PreviewCategoriesList() {
     MyCityTheme {
         CategoriesList(
             categories = CategoriesDataProvider.allCategories
+        )
+    }
+}
+
+@Composable
+private fun RecommendationListHeaderItem(
+    categoryName: String
+) {
+    Card(
+        colors = CardDefaults.cardColors(
+            //containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.category_header_item_inner_padding))
+        ) {
+            Text(
+                text = categoryName
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewRecommendationListHeaderItem() {
+    MyCityTheme {
+        RecommendationListHeaderItem(
+            categoryName = stringResource(CategoriesDataProvider.defaultCategory.nameId)
         )
     }
 }
@@ -346,4 +410,40 @@ private fun PreviewRecommendationDetail() {
             isFullscreen = true
         )
     }
+}
+
+@Composable
+fun MyCityApp(
+    windowSize: WindowWidthSizeClass,
+    modifier: Modifier = Modifier
+) {
+    val viewModel: MyCityViewModel = viewModel()
+    val myCityUiState = viewModel.uiState.collectAsState().value
+    val contentType: MyCityContentType = when (windowSize) {
+        WindowWidthSizeClass.Compact -> {
+            MyCityContentType.LIST_ONLY
+        }
+        WindowWidthSizeClass.Medium -> {
+            MyCityContentType.LIST_ONLY
+        }
+        WindowWidthSizeClass.Expanded -> {
+            MyCityContentType.LIST_AND_DETAIL
+        }
+        else -> {
+            MyCityContentType.LIST_ONLY
+        }
+    }
+    MyCityScreen(
+        contentType = contentType,
+        myCityUiState = myCityUiState
+    )
+}
+
+@Composable
+private fun MyCityScreen(
+    contentType: MyCityContentType,
+    myCityUiState: MyCityUiState,
+    modifier: Modifier = Modifier) {
+
+
 }
